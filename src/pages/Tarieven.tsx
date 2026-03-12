@@ -112,8 +112,8 @@ export function Tarieven() {
                   to="/contact"
                   className={`block text-center py-3 rounded-xl font-semibold transition-all whitespace-nowrap ${
                     plan.popular
-                      ? 'bg-white text-[#0284c7] hover:bg-gray-100'
-                      : 'bg-[#0284c7] text-white hover:bg-[#0369a1]'
+                      ? 'bg-white !text-[#0284c7] hover:bg-gray-100'
+                      : 'bg-[#0284c7] !text-white hover:bg-[#0369a1]'
                   }`}
                 >
                   Offerte aanvragen

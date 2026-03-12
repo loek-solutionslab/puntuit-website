@@ -60,14 +60,14 @@ export function Header() {
           <div className="flex items-center gap-4">
             <a
               href={`tel:${COMPANY.phone}`}
-              className="flex items-center gap-1 text-white/90 hover:text-white transition-colors"
+              className="flex items-center gap-1 !text-white/90 hover:!text-white transition-colors"
             >
               <Phone className="w-4 h-4" />
               <span className="hidden sm:inline">{COMPANY.phone}</span>
             </a>
             <a
               href={`mailto:${COMPANY.email}`}
-              className="flex items-center gap-1 text-white/90 hover:text-white transition-colors"
+              className="flex items-center gap-1 !text-white/90 hover:!text-white transition-colors"
             >
               <Mail className="w-4 h-4" />
               <span className="hidden sm:inline">{COMPANY.email}</span>
