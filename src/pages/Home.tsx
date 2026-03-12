@@ -2,12 +2,30 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, ChevronUp, ArrowRight, CheckCircle, Shield, Users, Clock, Award } from 'lucide-react';
 import { SERVICES, BENEFITS, FAQS, TESTIMONIALS, CLIENT_LOGOS } from '../lib/constants';
+import { SEO, SchemaMarkup } from '../components/seo';
 
 export function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   return (
-    <div className="pt-28">
+    <>
+      <SEO
+        title="Externe Vertrouwenspersonen | PuntUit"
+        description="PuntUit biedt externe vertrouwenspersonen met een unieke aanpak gericht op bewustwording, preventie en laagdrempelige bereikbaarheid. LVV gecertificeerd."
+        keywords="externe vertrouwenspersoon, sociale veiligheid, werkvloer, preventie, LVV gecertificeerd, vertrouwenspersoon"
+        canonicalUrl="/"
+      />
+      <SchemaMarkup type="localBusiness" pageUrl="https://puntuit.nl/" />
+      <SchemaMarkup type="website" />
+      <SchemaMarkup 
+        type="webpage" 
+        pageUrl="https://puntuit.nl/" 
+        pageTitle="Externe Vertrouwenspersonen | PuntUit"
+        pageDescription="PuntUit biedt externe vertrouwenspersonen met een unieke aanpak gericht op bewustwording, preventie en laagdrempelige bereikbaarheid."
+        breadcrumb={[{ name: 'Home', url: '/' }]}
+      />
+      <SchemaMarkup type="faqPage" />
+      <div className="pt-28">
       {/* Hero Section */}
       <section className="relative bg-[#0284c7] text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -74,6 +92,8 @@ export function Home() {
                 key={index}
                 src={logo}
                 alt="Klant logo"
+                loading="lazy"
+                decoding="async"
                 className="h-8 w-auto mx-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
               />
             ))}
@@ -104,6 +124,8 @@ export function Home() {
                   <img
                     src={service.image}
                     alt={service.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
@@ -219,6 +241,8 @@ export function Home() {
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
+                    loading="lazy"
+                    decoding="async"
                     className="w-12 h-12 rounded-full object-cover"
                   />
                   <h4 className="font-semibold">{testimonial.name}</h4>
@@ -255,5 +279,6 @@ export function Home() {
         </div>
       </section>
     </div>
+    </>
   );
 }

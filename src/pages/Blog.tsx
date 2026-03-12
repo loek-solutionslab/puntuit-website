@@ -1,10 +1,29 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Calendar, Clock } from 'lucide-react';
 import { BLOG_POSTS } from '../lib/constants';
+import { SEO, SchemaMarkup } from '../components/seo';
 
 export function Blog() {
   return (
-    <div className="pt-28">
+    <>
+      <SEO
+        title="Blog | Sociale Veiligheid op de Werkvloer"
+        description="Het laatste nieuws over sociale veiligheid, externe vertrouwenspersonen en een veilige werkomgeving. Lees onze artikelen over vertrouwenspersoon in onderwijs, zorg en MKB."
+        keywords="vertrouwenspersoon blog, sociale veiligheid, werkvloer, onderwijs, zorg, MKB"
+        canonicalUrl="/blog"
+      />
+      <SchemaMarkup
+        type="webpage"
+        pageUrl="https://puntuit.nl/blog"
+        pageTitle="Blog | Sociale Veiligheid op de Werkvloer"
+        pageDescription="Het laatste nieuws over sociale veiligheid en externe vertrouwenspersonen."
+        breadcrumb={[
+          { name: 'Home', url: '/' },
+          { name: 'Blog', url: '/blog' }
+        ]}
+      />
+
+      <div className="pt-28">
       {/* Hero Section */}
       <section className="relative bg-[#0284c7] text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -45,6 +64,8 @@ export function Blog() {
                   <img
                     src={post.image}
                     alt={post.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -142,6 +163,8 @@ export function Blog() {
                     <img
                       src="https://puntuit.nl/wp-content/uploads/2024/07/shared-logo-1.png"
                       alt="PuntUit"
+                      loading="lazy"
+                      decoding="async"
                       className="h-16 w-auto mx-auto mb-4"
                     />
                     <p className="text-primary-800 font-semibold">Productbrochure</p>
@@ -153,6 +176,7 @@ export function Blog() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

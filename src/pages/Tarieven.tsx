@@ -1,10 +1,29 @@
 import { Link } from 'react-router-dom';
 import { Check, ArrowRight, Star, Building2, Users2, Building } from 'lucide-react';
 import { PRICING, TESTIMONIALS } from '../lib/constants';
+import { SEO, SchemaMarkup } from '../components/seo';
 
 export function Tarieven() {
   return (
-    <div className="pt-28">
+    <>
+      <SEO
+        title="Tarieven | Externe Vertrouwenspersoon"
+        description="Compleet abonnement voor externe vertrouwenspersonen al vanaf €475 per jaar. Ontdek onze transparante prijzen voor kleine organisaties, MKB en grote bedrijven."
+        keywords="vertrouwenspersoon tarieven, externe vertrouwenspersoon kosten, vertrouwenspersoon prijs"
+        canonicalUrl="/tarieven"
+      />
+      <SchemaMarkup 
+        type="webpage" 
+        pageUrl="https://puntuit.nl/tarieven" 
+        pageTitle="Tarieven | Externe Vertrouwenspersoon"
+        pageDescription="Compleet abonnement voor externe vertrouwenspersonen al vanaf €475 per jaar."
+        breadcrumb={[
+          { name: 'Home', url: '/' },
+          { name: 'Tarieven', url: '/tarieven' }
+        ]}
+      />
+      <SchemaMarkup type="service" />
+      <div className="pt-28">
       {/* Hero Section */}
       <section className="relative bg-[#0284c7] text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -47,7 +66,7 @@ export function Tarieven() {
               >
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <span className="bg-secondary-500 text-white text-sm font-semibold px-4 py-1 rounded-full">
+                    <span className="bg-[#E85D56] text-white text-sm font-semibold px-4 py-1 rounded-full">
                       Meest gekozen
                     </span>
                   </div>
@@ -91,10 +110,10 @@ export function Tarieven() {
                 
                 <Link
                   to="/contact"
-                  className={`block text-center py-3 rounded-xl font-semibold transition-all ${
+                  className={`block text-center py-3 rounded-xl font-semibold transition-all whitespace-nowrap ${
                     plan.popular
-                      ? 'bg-white text-primary-700 hover:bg-primary-50'
-                      : 'bg-primary-600 text-white hover:bg-primary-700'
+                      ? 'bg-white text-[#0284c7] hover:bg-gray-100'
+                      : 'bg-[#0284c7] text-white hover:bg-[#0369a1]'
                   }`}
                 >
                   Offerte aanvragen
@@ -161,6 +180,8 @@ export function Tarieven() {
               <img
                 src="https://puntuit.nl/wp-content/uploads/2024/01/lvv-register-vertrouwenspersoon.png"
                 alt="LVV Gecertificeerd"
+                loading="lazy"
+                decoding="async"
                 className="relative bg-white rounded-2xl shadow-xl p-8 w-full"
               />
             </div>
@@ -188,6 +209,8 @@ export function Tarieven() {
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
+                    loading="lazy"
+                    decoding="async"
                     className="w-14 h-14 rounded-full object-cover"
                   />
                   <h4 className="font-semibold text-lg">{testimonial.name}</h4>
@@ -224,5 +247,6 @@ export function Tarieven() {
         </div>
       </section>
     </div>
+    </>
   );
 }

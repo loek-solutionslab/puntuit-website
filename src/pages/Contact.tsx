@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, MessageCircle, Send, CheckCircle, ArrowRight } from 'lucide-react';
 import { COMPANY } from '../lib/constants';
+import { SEO, SchemaMarkup } from '../components/seo';
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -39,9 +40,28 @@ export function Contact() {
   };
 
   return (
-    <div className="pt-28">
-      {/* Hero Section */}
-      <section className="relative bg-[#0284c7] text-white overflow-hidden">
+    <>
+      <SEO
+        title="Contact | Externe Vertrouwenspersoon"
+        description="Neem contact op met PuntUit voor een externe vertrouwenspersoon. Bereikbaar via telefoon, mail, WhatsApp of plan een online gesprek."
+        keywords="contact vertrouwenspersoon, externe vertrouwenspersoon contact, offerte aanvragen"
+        canonicalUrl="/contact"
+      />
+      <SchemaMarkup
+        type="webpage"
+        pageUrl="https://puntuit.nl/contact"
+        pageTitle="Contact | Externe Vertrouwenspersoon"
+        pageDescription="Neem contact op met PuntUit voor een externe vertrouwenspersoon."
+        breadcrumb={[
+          { name: 'Home', url: '/' },
+          { name: 'Contact', url: '/contact' }
+        ]}
+      />
+      <SchemaMarkup type="localBusiness" />
+
+      <div className="pt-28">
+        {/* Hero Section */}
+        <section className="relative bg-[#0284c7] text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
@@ -303,6 +323,7 @@ export function Contact() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }
