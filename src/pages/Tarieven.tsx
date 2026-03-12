@@ -168,10 +168,10 @@ export function Tarieven() {
               
               <Link
                 to="/contact"
-                className="btn-primary inline-flex items-center gap-2"
+                className="btn-primary inline-flex items-center gap-2 whitespace-nowrap"
               >
                 Offerte aanvragen
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-5 h-5 flex-shrink-0" />
               </Link>
             </div>
             
