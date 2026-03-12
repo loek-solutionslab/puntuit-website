@@ -1,22 +1,4 @@
 User-agent: *
-Allow: /
+Disallow: /
 
-# Sitemap
-Sitemap: https://puntuit.nl/sitemap.xml
-
-# Crawl-delay voor respectvolle crawlers
-Crawl-delay: 1
-
-# Blokkeer irrelevante paden
-Disallow: /admin
-Disallow: /api/
-Disallow: /private/
-Disallow: /*.pdf$
-
-# Toestaan van belangrijke assets
-Allow: /assets/
-Allow: /*.js$
-Allow: /*.css$
-Allow: /*.png$
-Allow: /*.jpg$
-Allow: /*.webp$
+# This site is under development and should not be indexed
