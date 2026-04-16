@@ -225,7 +225,7 @@ export function SchemaMarkup({
         },
         mainEntityOfPage: {
           '@type': 'WebPage',
-          '@id': `${baseUrl}/kennisbank/${articleMeta.slug}`,
+          '@id': pageUrl || `${baseUrl}/kennisbank/${articleMeta.slug}`,
         },
       }
     : null;

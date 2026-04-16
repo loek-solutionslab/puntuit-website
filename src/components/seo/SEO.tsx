@@ -22,6 +22,8 @@ export function SEO({
   const siteUrl = 'https://puntuit.nl';
   const fullCanonicalUrl = canonicalUrl ? `${siteUrl}${canonicalUrl}` : siteUrl;
   const fullTitle = title.includes('PuntUit') ? title : `${title} | PuntUit`;
+  const isStaging = typeof window !== 'undefined' && !window.location.hostname.includes('puntuit.nl');
+  const shouldNoIndex = noIndex || isStaging;
 
   return (
     <Helmet>
@@ -34,7 +36,7 @@ export function SEO({
       <link rel="canonical" href={fullCanonicalUrl} />
       
       {/* Robots */}
-      {noIndex ? (
+      {shouldNoIndex ? (
         <meta name="robots" content="noindex, nofollow" />
       ) : (
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />

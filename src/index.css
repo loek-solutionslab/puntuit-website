@@ -45,7 +45,9 @@ a.btn-primary:hover,
 a.btn-secondary,
 a.btn-secondary:hover,
 a.btn-accent,
-a.btn-accent:hover {
+a.btn-accent:hover,
+a[class*="text-white"],
+a[class*="text-white"]:hover {
   color: inherit;
 }
 
