@@ -1,17 +1,28 @@
 import { Link } from 'react-router-dom';
-import { SEO } from '../components/seo';
+import { SEO, SchemaMarkup } from '../components/seo';
 import { ServicesGrid } from '../components/ServicesGrid';
 
 export function ExterneVertrouwenspersoon() {
   return (
     <>
-      <SEO title="Externe Vertrouwenspersoon" description="Als HR ben je nooit echt neutraal. PuntUit wel." canonicalUrl="/externe-vertrouwenspersoon" />
+      <SEO title="Externe Vertrouwenspersoon" description="Wat doet een externe vertrouwenspersoon? PuntUit biedt onafhankelijke, LVV-gecertificeerde vertrouwenspersonen die 24/7 beschikbaar zijn voor jouw medewerkers." canonicalUrl="/externe-vertrouwenspersoon" />
+      <SchemaMarkup
+        type="service"
+        pageUrl="https://puntuit.nl/externe-vertrouwenspersoon"
+        pageTitle="Externe Vertrouwenspersoon"
+        pageDescription="Wat doet een externe vertrouwenspersoon? PuntUit biedt onafhankelijke, LVV-gecertificeerde vertrouwenspersonen die 24/7 beschikbaar zijn voor jouw medewerkers."
+        breadcrumb={[
+          { name: 'Home', url: '/' },
+          { name: 'Externe Vertrouwenspersoon', url: '/externe-vertrouwenspersoon' },
+        ]}
+      />
       <div className="pt-28">
         <section className="bg-[#0284c7] text-white">
           <div className="container py-24 md:py-32 max-w-4xl">
             <p className="text-sm mb-4">Voor werkgevers &amp; HR professionals</p>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Als HR ben je nooit echt neutraal. PuntUit wel.</h1>
-            <p className="text-xl text-primary-100 mb-8">PuntUit levert een externe vertrouwenspersoon die volledig buiten jouw organisatie staat. LVV-gecertificeerd, 24/7 beschikbaar en laagdrempelig voor elke medewerker.</p>
+            <p className="text-xl text-primary-100 mb-4">PuntUit levert een externe vertrouwenspersoon die volledig buiten jouw organisatie staat. LVV-gecertificeerd, 24/7 beschikbaar en laagdrempelig voor elke medewerker.</p>
+            <p className="text-xs text-white/50 mb-6">Laatst bijgewerkt: april 2026</p>
             <div className="flex gap-4 flex-wrap">
               <Link to="/contact" className="btn-primary">Vraag offerte aan</Link>
               <Link to="/tarieven" className="bg-white text-[#0284c7] px-6 py-3 rounded-lg font-medium">Bekijk tarieven</Link>

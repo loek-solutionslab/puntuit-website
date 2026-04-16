@@ -1,4 +1,8 @@
 User-agent: *
+Allow: /
+
+User-agent: CCBot
 Disallow: /
 
-# This site is under development and should not be indexed
+Sitemap: https://puntuit.nl/sitemap.xml
+Llms-txt: https://puntuit.nl/llms.txt

@@ -15,7 +15,7 @@ export function SEO({
   description,
   keywords,
   canonicalUrl,
-  ogImage = 'https://puntuit.nl/wp-content/uploads/2024/07/shared-logo-1.png',
+  ogImage = 'https://puntuit.nl/images/puntuit-logo.png',
   ogType = 'website',
   noIndex = false,
 }: SEOProps) {

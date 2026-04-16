@@ -1,6 +1,6 @@
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Clock, Tag, CheckCircle } from 'lucide-react';
-import { SEO } from '../components/seo';
+import { SEO, SchemaMarkup } from '../components/seo';
 import { ARTICLES } from './Blog';
 
 const ARTICLE_CONTENT: Record<string, { intro: string; sections: { heading: string; body: string[] }[]; cta: string }> = {
@@ -61,7 +61,22 @@ export function Article() {
 
   return (
     <>
-      <SEO title={meta.title} description={meta.desc} canonicalUrl={`/kennisbank/${slug}`} />
+      <SEO title={meta.title} description={meta.desc} canonicalUrl={`/kennisbank/${slug}`} ogType="article" />
+      <SchemaMarkup
+        type="article"
+        articleMeta={{
+          headline: meta.title,
+          description: meta.desc,
+          datePublished: '2026-03-12',
+          dateModified: '2026-04-16',
+          slug: slug!,
+        }}
+        breadcrumb={[
+          { name: 'Home', url: '/' },
+          { name: 'Kennisbank', url: '/kennisbank' },
+          { name: meta.title, url: `/kennisbank/${slug}` },
+        ]}
+      />
       <div className="pt-28">
 
         <section className="bg-[#0284c7] text-white">
@@ -80,7 +95,8 @@ export function Article() {
                 {meta.readTime} min leestijd
               </span>
             </div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">{meta.title}</h1>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4">{meta.title}</h1>
+            <p className="text-xs text-white/50">Laatst bijgewerkt: april 2026</p>
           </div>
         </section>
 

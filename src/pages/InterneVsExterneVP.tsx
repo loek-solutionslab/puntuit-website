@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { SEO } from '../components/seo';
+import { SEO, SchemaMarkup } from '../components/seo';
 import { ArrowRight, ImageIcon, ShieldCheck, Users } from 'lucide-react';
 
 function PlaceholderImage({ label }: { label?: string }) {
@@ -16,12 +16,23 @@ function PlaceholderImage({ label }: { label?: string }) {
 export function InterneVsExterneVP() {
   return (
     <>
-      <SEO title="Interne vs. Externe Vertrouwenspersoon" description="Interne of externe vertrouwenspersoon: wat werkt echt?" canonicalUrl="/interne-vs-externe-vp" />
+      <SEO title="Interne vs. Externe Vertrouwenspersoon" description="Vergelijking van interne en externe vertrouwenspersonen: onafhankelijkheid, bereikbaarheid, kosten en vertrouwen van medewerkers op een rij." canonicalUrl="/interne-vs-externe-vp" />
+      <SchemaMarkup
+        type="webpage"
+        pageUrl="https://puntuit.nl/interne-vs-externe-vp"
+        pageTitle="Interne vs. Externe Vertrouwenspersoon"
+        pageDescription="Vergelijking van interne en externe vertrouwenspersonen: onafhankelijkheid, bereikbaarheid, kosten en vertrouwen van medewerkers op een rij."
+        breadcrumb={[
+          { name: 'Home', url: '/' },
+          { name: 'Interne vs. Externe VP', url: '/interne-vs-externe-vp' },
+        ]}
+      />
       <div className="pt-28">
         <section className="bg-[#0284c7] text-white">
           <div className="container py-24 md:py-32 max-w-4xl">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Interne of externe vertrouwenspersoon: wat werkt echt?</h1>
-            <p className="text-xl text-primary-100">Veel organisaties kiezen voor intern - totdat ze zien waarom medewerkers niet bellen.</p>
+            <p className="text-xl text-primary-100 mb-4">Veel organisaties kiezen voor intern - totdat ze zien waarom medewerkers niet bellen.</p>
+            <p className="text-xs text-white/50">Laatst bijgewerkt: april 2026</p>
           </div>
         </section>
 

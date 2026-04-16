@@ -17,7 +17,7 @@ import {
   Download,
   Play,
 } from 'lucide-react';
-import { SEO } from '../components/seo';
+import { SEO, SchemaMarkup } from '../components/seo';
 import { LogoTicker } from '../components/LogoTicker';
 
 const features = [
@@ -87,6 +87,11 @@ export function Home() {
         title="PuntUit | Externe Vertrouwenspersoon"
         description="PuntUit is de externe vertrouwenspersoon voor jouw organisatie. Onafhankelijk, 24/7 bereikbaar en laagdrempelig voor elke medewerker."
         canonicalUrl="/"
+      />
+      <SchemaMarkup type="organization" />
+      <SchemaMarkup
+        type="website"
+        breadcrumb={[{ name: 'Home', url: '/' }]}
       />
       <div className="pt-28">
 
@@ -224,7 +229,7 @@ export function Home() {
         {/* ── TESTIMONIALS ── */}
         <section className="section-padding bg-white">
           <div className="container">
-            <p className="text-[#0284c7] text-xs font-semibold uppercase tracking-[0.2em] mb-2">Social proof</p>
+            <p className="text-[#0284c7] text-xs font-semibold uppercase tracking-[0.2em] mb-2">Van onze klanten</p>
             <h2 className="text-3xl md:text-4xl font-bold mb-12 text-gray-900">Wat anderen zeggen.</h2>
             <div className="grid md:grid-cols-3 gap-6">
               {[

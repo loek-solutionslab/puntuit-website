@@ -1,15 +1,35 @@
 import { Link } from 'react-router-dom';
-import { SEO } from '../components/seo';
+import { SEO, SchemaMarkup } from '../components/seo';
 
 export function Tarieven() {
   return (
     <>
-      <SEO title="Tarieven | PuntUit" description="Geregeld voor minder dan €40 per maand." canonicalUrl="/tarieven" />
+      <SEO title="Tarieven | PuntUit" description="Tarieven voor een externe vertrouwenspersoon bij PuntUit: vanaf €475 per jaar voor organisaties tot 250 medewerkers. Alles inbegrepen, geen verborgen kosten." canonicalUrl="/tarieven" />
+      <SchemaMarkup
+        type="service"
+        pageUrl="https://puntuit.nl/tarieven"
+        pageTitle="Tarieven — PuntUit"
+        pageDescription="Tarieven voor een externe vertrouwenspersoon bij PuntUit: vanaf €475 per jaar voor organisaties tot 250 medewerkers."
+        breadcrumb={[
+          { name: 'Home', url: '/' },
+          { name: 'Tarieven', url: '/tarieven' },
+        ]}
+      />
+      <SchemaMarkup
+        type="faqPage"
+        faqItems={[
+          { question: 'Wat als een medewerker meerdere gesprekken nodig heeft?', answer: 'Het eerste spreekuur is gratis. Daarna rekenen we €84 per uur, per kwartier verrekend. Je ontvangt vooraf altijd inzicht in de kosten.' },
+          { question: 'Zijn er opstartkosten?', answer: 'Nee. Je betaalt alleen het jaarabonnement. De communicatiekit en het onboarding-pakket zijn inbegrepen.' },
+          { question: 'Kan ik opzeggen?', answer: 'Ja. Het abonnement loopt per jaar en is jaarlijks opzegbaar.' },
+          { question: 'Wat als ik meer dan één vestiging heb?', answer: 'Neem contact op. We maken een passend voorstel op maat.' },
+        ]}
+      />
       <div className="pt-28">
         <section className="bg-[#0284c7] text-white">
           <div className="container py-24 md:py-32 text-center max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Geregeld voor minder dan €40 per maand.</h1>
-            <p className="text-xl text-primary-100">Een jaarabonnement. Alles inbegrepen. Geen verrassingen. Geen verborgen kosten.</p>
+            <p className="text-xl text-primary-100 mb-4">Een jaarabonnement. Alles inbegrepen. Geen verrassingen. Geen verborgen kosten.</p>
+            <p className="text-xs text-white/50">Laatst bijgewerkt: april 2026</p>
           </div>
         </section>
 

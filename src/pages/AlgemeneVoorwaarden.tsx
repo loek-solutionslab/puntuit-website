@@ -1,4 +1,4 @@
-import { SEO } from '../components/seo';
+import { SEO, SchemaMarkup } from '../components/seo';
 
 export function AlgemeneVoorwaarden() {
   return (
@@ -7,6 +7,15 @@ export function AlgemeneVoorwaarden() {
         title="Algemene Voorwaarden | PuntUit"
         description="Algemene voorwaarden van Bureau Puntuit B.V. — externe vertrouwenspersoon voor organisaties in Nederland."
         canonicalUrl="/algemene-voorwaarden"
+      />
+      <SchemaMarkup
+        type="webpage"
+        pageUrl="https://puntuit.nl/algemene-voorwaarden"
+        pageTitle="Algemene Voorwaarden — PuntUit"
+        breadcrumb={[
+          { name: 'Home', url: '/' },
+          { name: 'Algemene Voorwaarden', url: '/algemene-voorwaarden' },
+        ]}
       />
       <div className="pt-28">
         <section className="bg-[#0284c7] text-white">

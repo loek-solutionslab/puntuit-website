@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { SEO } from '../components/seo';
+import { SEO, SchemaMarkup } from '../components/seo';
 import { Mail, MessageCircle, Phone } from 'lucide-react';
 
 export function Contact() {
@@ -18,7 +18,14 @@ export function Contact() {
 
   return (
     <>
-      <SEO title="Contact | PuntUit" description="Stel je vraag. We reageren snel." canonicalUrl="/contact" />
+      <SEO title="Contact | PuntUit" description="Neem contact op met PuntUit voor een vrijblijvend gesprek over een externe vertrouwenspersoon. Bel, mail of WhatsApp — we reageren snel." canonicalUrl="/contact" />
+      <SchemaMarkup
+        type="localBusiness"
+        breadcrumb={[
+          { name: 'Home', url: '/' },
+          { name: 'Contact', url: '/contact' },
+        ]}
+      />
       <div className="pt-28">
         <section className="bg-[#0284c7] text-white">
           <div className="container py-24 md:py-32 max-w-3xl">

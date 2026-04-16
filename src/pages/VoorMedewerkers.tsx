@@ -1,4 +1,4 @@
-import { SEO } from '../components/seo';
+import { SEO, SchemaMarkup } from '../components/seo';
 import { COMPANY } from '../lib/constants';
 import { Phone, Mail, MessageCircle, CalendarCheck, Lock, ShieldCheck, UserX, Handshake, Compass } from 'lucide-react';
 
@@ -48,7 +48,17 @@ const rules = [
 export function VoorMedewerkers() {
   return (
     <>
-      <SEO title="Voor Medewerkers" description="Je hoeft dit niet alleen op te lossen." canonicalUrl="/voor-medewerkers" />
+      <SEO title="Voor Medewerkers" description="PuntUit is de externe vertrouwenspersoon van jouw werkgever. Neem gratis en vertrouwelijk contact op via telefoon, e-mail, WhatsApp of plan een afspraak." canonicalUrl="/voor-medewerkers" />
+      <SchemaMarkup
+        type="webpage"
+        pageUrl="https://puntuit.nl/voor-medewerkers"
+        pageTitle="Voor Medewerkers"
+        pageDescription="PuntUit is de externe vertrouwenspersoon van jouw werkgever. Neem gratis en vertrouwelijk contact op via telefoon, e-mail, WhatsApp of plan een afspraak."
+        breadcrumb={[
+          { name: 'Home', url: '/' },
+          { name: 'Voor Medewerkers', url: '/voor-medewerkers' },
+        ]}
+      />
       <div className="pt-28">
         <section className="bg-[#0284c7] text-white">
           <div className="container py-24 md:py-32 max-w-4xl">

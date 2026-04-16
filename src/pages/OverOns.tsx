@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { SEO } from '../components/seo';
+import { SEO, SchemaMarkup } from '../components/seo';
 import { MapPin, Users, ImageIcon } from 'lucide-react';
 
 const teamMembers = [
@@ -32,7 +32,17 @@ const teamMembers = [
 export function OverOns() {
   return (
     <>
-      <SEO title="Over Ons" description="Mensen die begrijpen wat er speelt." canonicalUrl="/over-ons" />
+      <SEO title="Over Ons" description="Maak kennis met het team van PuntUit: LVV-gecertificeerde externe vertrouwenspersonen met vestigingen in Diemen en Den Haag, actief door heel Nederland." canonicalUrl="/over-ons" />
+      <SchemaMarkup
+        type="webpage"
+        pageUrl="https://puntuit.nl/over-ons"
+        pageTitle="Over Ons — PuntUit"
+        pageDescription="Maak kennis met het team van PuntUit: LVV-gecertificeerde externe vertrouwenspersonen met vestigingen in Diemen en Den Haag, actief door heel Nederland."
+        breadcrumb={[
+          { name: 'Home', url: '/' },
+          { name: 'Over Ons', url: '/over-ons' },
+        ]}
+      />
       <div className="pt-28">
         <section className="bg-[#0284c7] text-white">
           <div className="container py-24 md:py-32 max-w-4xl">

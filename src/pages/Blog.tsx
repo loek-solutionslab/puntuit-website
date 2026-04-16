@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, BookOpen, Clock, Search, Tag } from 'lucide-react';
-import { SEO } from '../components/seo';
+import { SEO, SchemaMarkup } from '../components/seo';
 
 export const ARTICLES = [
   { slug: 'vertrouwenspersoon-verplicht', tag: 'Juridisch', title: 'Is een vertrouwenspersoon verplicht in 2025 en 2026?', desc: 'Een vertrouwenspersoon is op dit moment niet wettelijk verplicht, maar in de praktijk wordt het steeds vaker verwacht. Lees hoe het juridisch zit.', readTime: 4 },
@@ -16,8 +16,18 @@ export function Blog() {
     <>
       <SEO
         title="Kennisbank | PuntUit"
-        description="Alles wat je moet weten over de vertrouwenspersoon."
+        description="Kennisbank over de vertrouwenspersoon: artikelen over wetgeving, verplichtingen, kosten, interne vs. externe VP en preventie van ongewenst gedrag."
         canonicalUrl="/kennisbank"
+      />
+      <SchemaMarkup
+        type="webpage"
+        pageUrl="https://puntuit.nl/kennisbank"
+        pageTitle="Kennisbank — PuntUit"
+        pageDescription="Kennisbank over de vertrouwenspersoon: artikelen over wetgeving, verplichtingen, kosten, interne vs. externe VP en preventie van ongewenst gedrag."
+        breadcrumb={[
+          { name: 'Home', url: '/' },
+          { name: 'Kennisbank', url: '/kennisbank' },
+        ]}
       />
       <div className="pt-28">
         <section className="bg-[#0284c7] text-white">

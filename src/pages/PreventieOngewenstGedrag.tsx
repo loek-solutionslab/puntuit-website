@@ -1,17 +1,28 @@
 import { Link } from 'react-router-dom';
-import { SEO } from '../components/seo';
+import { SEO, SchemaMarkup } from '../components/seo';
 import { ServicesGrid } from '../components/ServicesGrid';
 import { TrendingDown, Search, ArrowRight } from 'lucide-react';
 
 export function PreventieOngewenstGedrag() {
   return (
     <>
-      <SEO title="Preventie Ongewenst Gedrag" description="Een melding is al te laat. Voorkom het." canonicalUrl="/preventie-ongewenst-gedrag" />
+      <SEO title="Preventie Ongewenst Gedrag" description="Voorkom ongewenst gedrag op de werkvloer met de Early Awareness Tool van PuntUit. Signaleer patronen vroegtijdig en grijp in voordat het escaleert." canonicalUrl="/preventie-ongewenst-gedrag" />
+      <SchemaMarkup
+        type="service"
+        pageUrl="https://puntuit.nl/preventie-ongewenst-gedrag"
+        pageTitle="Preventie Ongewenst Gedrag"
+        pageDescription="Voorkom ongewenst gedrag op de werkvloer met de Early Awareness Tool van PuntUit. Signaleer patronen vroegtijdig en grijp in voordat het escaleert."
+        breadcrumb={[
+          { name: 'Home', url: '/' },
+          { name: 'Preventie Ongewenst Gedrag', url: '/preventie-ongewenst-gedrag' },
+        ]}
+      />
       <div className="pt-28">
         <section className="bg-[#0284c7] text-white">
           <div className="container py-24 md:py-32 max-w-4xl">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Een melding is al te laat. Voorkom het.</h1>
-            <p className="text-xl text-primary-100 mb-8">PuntUit helpt je ongewenst gedrag te signaleren voordat het escaleert. Bewustwording, preventie en een vroeg-waarschuwingssysteem.</p>
+            <p className="text-xl text-primary-100 mb-4">PuntUit helpt je ongewenst gedrag te signaleren voordat het escaleert. Bewustwording, preventie en een vroeg-waarschuwingssysteem.</p>
+            <p className="text-xs text-white/50 mb-6">Laatst bijgewerkt: april 2026</p>
             <Link className="btn-primary" to="/contact">Vraag offerte aan</Link>
           </div>
         </section>

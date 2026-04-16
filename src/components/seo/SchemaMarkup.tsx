@@ -2,11 +2,19 @@ import { Helmet } from 'react-helmet-async';
 import { COMPANY } from '../../lib/constants';
 
 interface SchemaMarkupProps {
-  type: 'organization' | 'localBusiness' | 'website' | 'webpage' | 'service' | 'faqPage';
+  type: 'organization' | 'localBusiness' | 'website' | 'webpage' | 'service' | 'faqPage' | 'article';
   pageUrl?: string;
   pageTitle?: string;
   pageDescription?: string;
   breadcrumb?: Array<{ name: string; url: string }>;
+  articleMeta?: {
+    headline: string;
+    description: string;
+    datePublished: string;
+    dateModified: string;
+    slug: string;
+  };
+  faqItems?: Array<{ question: string; answer: string }>;
 }
 
 export function SchemaMarkup({
@@ -15,16 +23,17 @@ export function SchemaMarkup({
   pageTitle,
   pageDescription,
   breadcrumb,
+  articleMeta,
+  faqItems,
 }: SchemaMarkupProps) {
   const baseUrl = 'https://puntuit.nl';
 
-  // Organization Schema
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: COMPANY.name,
     url: baseUrl,
-    logo: 'https://puntuit.nl/wp-content/uploads/2024/07/shared-logo-1.png',
+    logo: `${baseUrl}/images/puntuit-logo.png`,
     description: COMPANY.tagline,
     email: COMPANY.email,
     telephone: COMPANY.phone,
@@ -39,13 +48,12 @@ export function SchemaMarkup({
     ],
   };
 
-  // LocalBusiness Schema
   const localBusinessSchema = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
     name: COMPANY.name,
     url: baseUrl,
-    logo: 'https://puntuit.nl/wp-content/uploads/2024/07/shared-logo-1.png',
+    logo: `${baseUrl}/images/puntuit-logo.png`,
     description: COMPANY.tagline,
     email: COMPANY.email,
     telephone: COMPANY.phone,
@@ -92,23 +100,13 @@ export function SchemaMarkup({
     },
   };
 
-  // Website Schema
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: COMPANY.name,
     url: baseUrl,
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${baseUrl}/search?q={search_term_string}`,
-      },
-      'query-input': 'required name=search_term_string',
-    },
   };
 
-  // WebPage Schema
   const webpageSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
@@ -122,11 +120,10 @@ export function SchemaMarkup({
     },
     primaryImageOfPage: {
       '@type': 'ImageObject',
-      url: 'https://puntuit.nl/wp-content/uploads/2024/07/shared-logo-1.png',
+      url: `${baseUrl}/images/puntuit-logo.png`,
     },
   };
 
-  // Service Schema
   const serviceSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -179,7 +176,6 @@ export function SchemaMarkup({
     },
   };
 
-  // Breadcrumb Schema
   const breadcrumbSchema = breadcrumb
     ? {
         '@context': 'https://schema.org',
@@ -193,37 +189,46 @@ export function SchemaMarkup({
       }
     : null;
 
-  // FAQ Schema
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'Hoe verloopt het proces als we klant willen worden?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'We sturen u een offerte die digitaal getekend kan worden. Direct nadat de offerte getekend is kunnen de medewerkers gebruik maken van onze diensten. We sturen dan direct twee welkomstmails.',
-        },
+    mainEntity: (faqItems || []).map(item => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
       },
-      {
-        '@type': 'Question',
-        name: 'Werken jullie ook voor organisaties met een interne VP?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Ja! Veel van onze opdrachtgevers hebben ook een interne vertrouwenspersoon. Met zowel een interne als een externe vertrouwenspersoon kan de melder kiezen wat deze het prettigst vindt.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Waar voeren jullie de gesprekken?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'We hebben een abonnement waarmee we in heel Nederland ruimte beschikbaar hebben die we kunnen reserveren als spreekruimte. De afspraken voor het gratis spreekuur zijn altijd online of telefonisch.',
-        },
-      },
-    ],
+    })),
   };
+
+  const articleSchema = articleMeta
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: articleMeta.headline,
+        description: articleMeta.description,
+        datePublished: articleMeta.datePublished,
+        dateModified: articleMeta.dateModified,
+        author: {
+          '@type': 'Organization',
+          name: COMPANY.name,
+          url: baseUrl,
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: COMPANY.name,
+          logo: {
+            '@type': 'ImageObject',
+            url: `${baseUrl}/images/puntuit-logo.png`,
+          },
+        },
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': `${baseUrl}/kennisbank/${articleMeta.slug}`,
+        },
+      }
+    : null;
 
   let schema;
   switch (type) {
@@ -245,15 +250,20 @@ export function SchemaMarkup({
     case 'faqPage':
       schema = faqSchema;
       break;
+    case 'article':
+      schema = articleSchema;
+      break;
     default:
       schema = organizationSchema;
   }
 
   return (
     <Helmet>
-      <script type="application/ld+json">
-        {JSON.stringify(schema)}
-      </script>
+      {schema && (
+        <script type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      )}
       {breadcrumbSchema && (
         <script type="application/ld+json">
           {JSON.stringify(breadcrumbSchema)}
