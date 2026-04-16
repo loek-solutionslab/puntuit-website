@@ -32,17 +32,15 @@ export function PreventieOngewenstGedrag() {
               </div>
               <div className="relative">
                 <div className="bg-gradient-to-br from-[#0284c7]/5 to-[#E85D56]/5 rounded-3xl p-8 md:p-10">
-                  <div className="space-y-5">
+                  <div className="relative space-y-5">
+                    <div className="absolute left-[5px] top-[6px] bottom-[6px] w-px bg-gray-200" />
                     {[
                       { label: 'Signaal', value: 'Gedragspatroon gedetecteerd', color: 'bg-amber-400' },
                       { label: 'Actie', value: 'Informatievideo gedeeld', color: 'bg-[#0284c7]' },
                       { label: 'Resultaat', value: 'Bewustwording zonder melding', color: 'bg-emerald-500' },
-                    ].map((step, i) => (
-                      <div key={step.label} className="flex items-center gap-4">
-                        <div className="flex flex-col items-center">
-                          <div className={`w-3 h-3 rounded-full ${step.color}`} />
-                          {i < 2 && <div className="w-px h-8 bg-gray-200" />}
-                        </div>
+                    ].map((step) => (
+                      <div key={step.label} className="flex items-center gap-4 relative">
+                        <div className={`w-3 h-3 rounded-full ${step.color} flex-shrink-0 z-10`} />
                         <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm flex-1">
                           <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-1">{step.label}</p>
                           <p className="text-gray-900 font-medium">{step.value}</p>
@@ -79,7 +77,7 @@ export function PreventieOngewenstGedrag() {
                     ].map((item) => (
                       <div key={item.q} className="flex items-center gap-3">
                         <div className={`w-2 h-2 rounded-full flex-shrink-0 ${item.emphasis ? 'bg-[#E85D56]' : 'bg-gray-300'}`} />
-                        <p className={`text-sm ${item.emphasis ? 'text-gray-900 font-medium' : 'text-gray-600'}`}>{item.q}</p>
+                        <p className="text-sm text-gray-900 font-semibold">{item.q}</p>
                       </div>
                     ))}
                   </div>

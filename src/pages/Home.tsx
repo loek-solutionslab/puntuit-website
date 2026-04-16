@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
@@ -14,6 +15,7 @@ import {
   BookOpen,
   ChevronRight,
   Download,
+  Play,
 } from 'lucide-react';
 import { SEO } from '../components/seo';
 import { LogoTicker } from '../components/LogoTicker';
@@ -39,6 +41,44 @@ const articles = [
   { tag: 'Werkgever', title: 'Interne vs. externe vertrouwenspersoon: wat werkt beter?', desc: 'Medewerkers melden liever extern. Dit zijn de vijf belangrijkste redenen.', to: '/interne-vs-externe-vp' },
   { tag: 'Preventie', title: 'Ongewenst gedrag: hoe signaleer je het vroeg?', desc: 'Wachten op een melding is al te laat. Zo pak je het preventief aan.', to: '/preventie-ongewenst-gedrag' },
 ];
+
+function HeroVideo() {
+  const [playing, setPlaying] = useState(false);
+
+  return (
+    <div className="hidden lg:block">
+      <div className="aspect-[3/3] rounded-[2rem] overflow-hidden ring-1 ring-white/20 shadow-2xl relative">
+        {playing ? (
+          <video
+            src="/video/b6378e44-771a9a75.mp4"
+            controls
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <button
+            onClick={() => setPlaying(true)}
+            className="w-full h-full relative group cursor-pointer"
+          >
+            <img
+              src="/images/extern-vertrouwenspersoon.jpg"
+              alt="Bekijk de PuntUit video"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+              <div className="w-20 h-20 rounded-full bg-white/90 group-hover:bg-white group-hover:scale-110 transition-all flex items-center justify-center shadow-lg">
+                <Play className="w-8 h-8 text-[#0284c7] ml-1" />
+              </div>
+            </div>
+          </button>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export function Home() {
   return (
@@ -89,18 +129,7 @@ export function Home() {
                 </Link>
               </div>
 
-              <div className="hidden lg:block">
-                <div className="aspect-[3/3] rounded-[2rem] overflow-hidden ring-1 ring-white/20 shadow-2xl">
-                  <video
-                    src="/video/b6378e44-771a9a75.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
+              <HeroVideo />
             </div>
           </div>
         </section>
