@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Clock, MessageCircle } from 'lucide-react';
-import { COMPANY, NAV_LINKS } from '../lib/constants';
+import { Mail, MessageCircle, Phone } from 'lucide-react';
+import { COMPANY, EMPLOYER_DROPDOWN_LINKS } from '../lib/constants';
 
 function Logo() {
   return (
@@ -25,12 +25,11 @@ export function Footer() {
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Company info */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           <div className="space-y-6">
             <Logo />
             <p className="text-gray-400 text-sm leading-relaxed">
-              PuntUit biedt externe vertrouwenspersonen met een unieke aanpak gericht op bewustwording, preventie en laagdrempelige bereikbaarheid.
+              Externe Vertrouwenspersoon voor Nederland. LVV-gecertificeerd · Lid van de LVV
             </p>
             <img
               src="https://puntuit.nl/wp-content/uploads/2024/01/lvv-register-vertrouwenspersoon.png"
@@ -39,11 +38,10 @@ export function Footer() {
             />
           </div>
 
-          {/* Quick links */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Snel naar</h3>
+            <h3 className="text-lg font-semibold mb-6">Diensten</h3>
             <ul className="space-y-3">
-              {NAV_LINKS.map((link) => (
+              {EMPLOYER_DROPDOWN_LINKS.map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.href}
@@ -56,7 +54,16 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact info */}
+          <div>
+            <h3 className="text-lg font-semibold mb-6">Informatie</h3>
+            <ul className="space-y-3">
+              <li><Link to="/over-ons" className="text-gray-400 hover:text-white transition-colors">Over Ons</Link></li>
+              <li><Link to="/over-ons" className="text-gray-400 hover:text-white transition-colors">Team & Vertrouwenspersonen</Link></li>
+              <li><Link to="/kennisbank" className="text-gray-400 hover:text-white transition-colors">Kennisbank</Link></li>
+              <li><Link to="/tarieven" className="text-gray-400 hover:text-white transition-colors">Veelgestelde vragen</Link></li>
+            </ul>
+          </div>
+
           <div>
             <h3 className="text-lg font-semibold mb-6">Contact</h3>
             <ul className="space-y-4">
@@ -89,30 +96,16 @@ export function Footer() {
                   <span>WhatsApp</span>
                 </a>
               </li>
-              <li className="flex items-start gap-3 text-gray-400">
-                <Clock className="w-5 h-5 mt-0.5 text-[#0284c7]" />
-                <span>Ma-Vr: 9:00 - 21:00</span>
-              </li>
             </ul>
           </div>
 
-          {/* Addresses */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Bezoekadres</h3>
-            <ul className="space-y-4">
-              {COMPANY.addresses.map((address, index) => (
-                <li key={index} className="flex items-start gap-3 text-gray-400">
-                  <MapPin className="w-5 h-5 mt-0.5 text-[#0284c7] flex-shrink-0" />
-                  <div>
-                    <p>{address.street}</p>
-                    <p>{address.city}</p>
-                  </div>
-                </li>
-              ))}
+            <h3 className="text-lg font-semibold mb-6">Legal</h3>
+            <ul className="space-y-3">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Privacyverklaring</a></li>
+              <li><Link to="/algemene-voorwaarden" className="text-gray-400 hover:text-white transition-colors">Algemene voorwaarden</Link></li>
             </ul>
-            <p className="mt-4 text-sm text-gray-500">
-              KvK: {COMPANY.kvk}
-            </p>
+            <p className="mt-4 text-sm text-gray-500">KvK: {COMPANY.kvk}</p>
           </div>
         </div>
       </div>
@@ -123,12 +116,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
             <p>&copy; {COMPANY.year} {COMPANY.name} |</p>
             <div className="flex gap-6">
-              <Link to="/privacy" className="hover:text-white transition-colors">
-                Privacy policy
-              </Link>
-              <Link to="/cookies" className="hover:text-white transition-colors">
-                Cookies
-              </Link>
+              <span className="hover:text-white transition-colors">Alle rechten voorbehouden</span>
             </div>
           </div>
         </div>

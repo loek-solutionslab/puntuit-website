@@ -1,181 +1,76 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Calendar, Clock } from 'lucide-react';
-import { BLOG_POSTS } from '../lib/constants';
-import { SEO, SchemaMarkup } from '../components/seo';
+import { ArrowRight, BookOpen, Clock, Search, Tag } from 'lucide-react';
+import { SEO } from '../components/seo';
+
+export const ARTICLES = [
+  { slug: 'vertrouwenspersoon-verplicht', tag: 'Juridisch', title: 'Is een vertrouwenspersoon verplicht in 2025 en 2026?', desc: 'Een vertrouwenspersoon is op dit moment niet wettelijk verplicht, maar in de praktijk wordt het steeds vaker verwacht. Lees hoe het juridisch zit.', readTime: 4 },
+  { slug: 'interne-vs-externe-vertrouwenspersoon', tag: 'Werkgever', title: 'Interne vs. externe vertrouwenspersoon: 5 redenen voor extern', desc: 'Medewerkers melden liever extern. Dit zijn de vijf belangrijkste redenen waarom een externe vertrouwenspersoon effectiever is.', readTime: 5 },
+  { slug: 'wat-kost-een-externe-vertrouwenspersoon', tag: 'Werkgever', title: 'Wat kost een externe vertrouwenspersoon?', desc: 'Een compleet abonnement vanaf €475 per jaar. Wat zit er in en hoe verhoudt het zich tot de kosten van een interne oplossing?', readTime: 3 },
+  { slug: 'ongewenst-gedrag-herkennen', tag: 'Preventie', title: 'Ongewenst gedrag herkennen vóórdat het escaleert', desc: 'Wachten op een melding is al te laat. Zo pak je het preventief aan met vroegsignalering en de juiste tools.', readTime: 6 },
+  { slug: 'wat-doet-een-vertrouwenspersoon', tag: 'Medewerker', title: 'Wat doet een vertrouwenspersoon precies?', desc: 'De vertrouwenspersoon luistert, begeleidt en signaleert. Maar lost het probleem niet op. Wat kun je precies verwachten?', readTime: 4 },
+  { slug: 'verschil-vertrouwenspersoon-mediator', tag: 'Basis', title: 'Wat is het verschil tussen een vertrouwenspersoon en een mediator?', desc: 'Twee verschillende rollen die vaak worden verward. Een heldere uitleg over wat ze wel en niet doen.', readTime: 3 },
+];
 
 export function Blog() {
   return (
     <>
       <SEO
-        title="Blog | Sociale Veiligheid op de Werkvloer"
-        description="Het laatste nieuws over sociale veiligheid, externe vertrouwenspersonen en een veilige werkomgeving. Lees onze artikelen over vertrouwenspersoon in onderwijs, zorg en MKB."
-        keywords="vertrouwenspersoon blog, sociale veiligheid, werkvloer, onderwijs, zorg, MKB"
-        canonicalUrl="/blog"
+        title="Kennisbank | PuntUit"
+        description="Alles wat je moet weten over de vertrouwenspersoon."
+        canonicalUrl="/kennisbank"
       />
-      <SchemaMarkup
-        type="webpage"
-        pageUrl="https://puntuit.nl/blog"
-        pageTitle="Blog | Sociale Veiligheid op de Werkvloer"
-        pageDescription="Het laatste nieuws over sociale veiligheid en externe vertrouwenspersonen."
-        breadcrumb={[
-          { name: 'Home', url: '/' },
-          { name: 'Blog', url: '/blog' }
-        ]}
-      />
-
       <div className="pt-28">
-      {/* Hero Section */}
-      <section className="relative bg-[#0284c7] text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }} />
-        </div>
-        
-        <div className="container relative z-10 py-20 md:py-24">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-              <Calendar className="w-5 h-5" />
-              <span className="text-sm font-medium">Actueel</span>
-            </div>
-            
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Blog
-            </h1>
-            
-            <p className="text-xl text-primary-100 mb-8">
-              Het laatste nieuws vanaf de werkvloer, we laten je graag zien wat er speelt.
-            </p>
+        <section className="bg-[#0284c7] text-white">
+          <div className="container py-24 md:py-32 max-w-4xl">
+            <p className="text-xs font-semibold text-white/60 uppercase tracking-[0.2em] mb-6">Kennisbank</p>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">Alles wat je moet weten over de vertrouwenspersoon.</h1>
+            <p className="text-xl text-white/85">Artikelen voor werkgevers, HR-professionals en medewerkers.</p>
           </div>
-        </div>
-        
-      </section>
+        </section>
 
-      {/* Blog Posts Grid */}
-      <section className="section-padding bg-white">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {BLOG_POSTS.map((post, index) => (
-              <article
-                key={index}
-                className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100"
-              >
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
-                
-                <div className="p-6">
-                  <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
-                    <span className="flex items-center gap-1">
-                      <Calendar className="w-4 h-4" />
-                      {post.date}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Clock className="w-4 h-4" />
-                      5 min
+        <section className="section-padding bg-white">
+          <div className="container max-w-5xl">
+            <div className="flex flex-wrap gap-2 mb-6">
+              {['Alle artikelen', 'Juridisch', 'Voor Werkgevers', 'Voor Medewerkers', 'Preventie', 'Basis'].map((filter) => (
+                <span key={filter} className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600 border border-gray-200 cursor-pointer hover:bg-[#0284c7]/5 hover:text-[#0284c7] hover:border-[#0284c7]/20 transition-colors">
+                  <Tag className="w-3 h-3 mr-1.5" />
+                  {filter}
+                </span>
+              ))}
+            </div>
+            <div className="relative mb-10">
+              <Search className="w-5 h-5 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" />
+              <input className="w-full border border-gray-300 rounded-xl pl-11 pr-4 py-3 text-sm" placeholder="Zoek een artikel..." />
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {ARTICLES.map((article) => (
+                <Link
+                  key={article.slug}
+                  to={`/kennisbank/${article.slug}`}
+                  className="bg-white rounded-2xl border border-gray-100 hover:shadow-lg transition-all group block overflow-hidden"
+                >
+                  <div className="p-7">
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="inline-block text-[10px] font-bold uppercase tracking-widest bg-[#0284c7]/5 text-[#0284c7] px-3 py-1.5 rounded-md">{article.tag}</span>
+                      <span className="flex items-center gap-1 text-xs text-gray-400">
+                        <Clock className="w-3 h-3" />
+                        {article.readTime} min
+                      </span>
+                    </div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#0284c7] transition-colors leading-snug">{article.title}</h3>
+                    <p className="text-gray-500 text-sm leading-relaxed mb-5">{article.desc}</p>
+                    <span className="inline-flex items-center gap-1.5 text-[#0284c7] font-bold text-xs uppercase tracking-widest group-hover:gap-2.5 transition-all">
+                      <BookOpen className="w-3.5 h-3.5" />
+                      Lees artikel
+                      <ArrowRight className="w-3 h-3" />
                     </span>
                   </div>
-                  
-                  <h3 className="text-xl font-semibold mb-2 group-hover:text-primary-600 transition-colors">
-                    {post.title}
-                  </h3>
-                  
-                  <p className="text-gray-600 mb-4">
-                    {post.excerpt}
-                  </p>
-                  
-                  <button className="inline-flex items-center gap-1 text-primary-600 font-medium hover:gap-2 transition-all">
-                    Lees meer
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Newsletter Section */}
-      <section className="section-padding bg-gray-50">
-        <div className="container">
-          <div className="bg-gradient-to-br from-primary-600 to-primary-800 rounded-3xl p-8 md:p-16 text-center text-white">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Blijf op de hoogte
-            </h2>
-            
-            <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-              Schrijf je in voor onze nieuwsbrief en ontvang het laatste nieuws over sociale veiligheid op de werkvloer.
-            </p>
-            
-            <form className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
-              <input
-                type="email"
-                placeholder="Jouw e-mailadres"
-                className="flex-1 px-6 py-4 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-white/50"
-              />
-              <button
-                type="submit"
-                className="bg-white text-primary-700 px-8 py-4 rounded-xl font-semibold hover:bg-primary-50 transition-colors"
-              >
-                Inschrijven
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      {/* Brochure Section */}
-      <section className="section-padding bg-white">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="text-primary-600 font-semibold text-sm uppercase tracking-wider">Gratis</span>
-              
-              <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6">
-                Brochure ontvangen?
-              </h2>
-              
-              <p className="text-gray-600 text-lg mb-6">
-                Benieuwd wat een externe vertrouwenspersoon voor jouw organisatie kan betekenen? In onze brochure vind je een helder en compleet overzicht van onze aanpak en werkwijze.
-              </p>
-              
-              <Link
-                to="/contact"
-                className="btn-primary inline-flex items-center gap-2"
-              >
-                Vraag brochure aan
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </div>
-            
-            <div className="relative">
-              <div className="absolute inset-0 bg-primary-200 rounded-3xl transform -rotate-3" />
-              <div className="relative bg-white rounded-2xl shadow-xl p-8">
-                <div className="aspect-[3/4] bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl flex items-center justify-center">
-                  <div className="text-center">
-                    <img
-                      src="https://puntuit.nl/wp-content/uploads/2024/07/shared-logo-1.png"
-                      alt="PuntUit"
-                      loading="lazy"
-                      decoding="async"
-                      className="h-16 w-auto mx-auto mb-4"
-                    />
-                    <p className="text-primary-800 font-semibold">Productbrochure</p>
-                    <p className="text-primary-600 text-sm">Externe Vertrouwenspersonen</p>
-                  </div>
-                </div>
-              </div>
+                </Link>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
       </div>
     </>
   );

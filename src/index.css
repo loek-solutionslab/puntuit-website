@@ -40,6 +40,20 @@ a:hover {
   color: #0369a1;
 }
 
+a.btn-primary,
+a.btn-primary:hover,
+a.btn-secondary,
+a.btn-secondary:hover,
+a.btn-accent,
+a.btn-accent:hover {
+  color: inherit;
+}
+
+a.btn-primary,
+a.btn-primary:hover {
+  color: white;
+}
+
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
   font-weight: 600;
@@ -75,11 +89,16 @@ h3 {
   border-radius: 0.5rem;
   font-weight: 500;
   transition: all 0.2s ease;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  cursor: pointer;
 }
 
 .btn-primary:hover {
   background-color: #D14A43;
+  color: white;
   box-shadow: 0 10px 15px -3px rgba(232, 93, 86, 0.2);
 }
 
@@ -92,7 +111,11 @@ h3 {
   font-weight: 500;
   border: 2px solid #0284c7;
   transition: all 0.2s ease;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  cursor: pointer;
 }
 
 .btn-secondary:hover {
@@ -108,11 +131,25 @@ h3 {
   font-weight: 500;
   border: 2px solid #E85D56;
   transition: all 0.2s ease;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  cursor: pointer;
 }
 
 .btn-accent:hover {
   background-color: #FEF2F2;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid #0ea5e9;
+  outline-offset: 2px;
+  border-radius: 0.5rem;
 }
 
 .container {
@@ -184,5 +221,36 @@ h3 {
 @media (min-width: 768px) {
   .logo svg {
     height: 48px;
+  }
+}
+
+/* Logo ticker */
+.logo-ticker {
+  position: relative;
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+.logo-ticker-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: ticker-scroll 35s linear infinite;
+}
+
+.logo-ticker-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2.5rem;
+}
+
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-25%);
   }
 }

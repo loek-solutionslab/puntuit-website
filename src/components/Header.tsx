@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, Mail } from 'lucide-react';
-import { NAV_LINKS, COMPANY } from '../lib/constants';
+import { Menu, X, Phone, Mail, ChevronDown, CheckCircle } from 'lucide-react';
+import { COMPANY, EMPLOYER_DROPDOWN_LINKS, NAV_LINKS } from '../lib/constants';
 
 function Logo() {
   return (
@@ -54,27 +54,32 @@ export function Header() {
           : 'bg-white'
       }`}
     >
-      {/* Top bar - accent color rood */}
-      <div className="bg-[#E85D56] text-white py-2">
-        <div className="container flex justify-between items-center text-sm">
-          <div className="flex items-center gap-4">
-            <a
-              href={`tel:${COMPANY.phone}`}
-              className="flex items-center gap-1 !text-white/90 hover:!text-white transition-colors"
-            >
-              <Phone className="w-4 h-4" />
-              <span className="hidden sm:inline">{COMPANY.phone}</span>
-            </a>
-            <a
-              href={`mailto:${COMPANY.email}`}
-              className="flex items-center gap-1 !text-white/90 hover:!text-white transition-colors"
-            >
-              <Mail className="w-4 h-4" />
-              <span className="hidden sm:inline">{COMPANY.email}</span>
-            </a>
-          </div>
-          <div className="text-white/80 text-xs">
-            Meer dan 500 organisaties vertrouwen ons
+      {/* Top bar - trust strip */}
+      <div className="bg-gray-50 border-b border-gray-200 py-2">
+        <div className="container">
+          <div className="flex items-center justify-between text-sm text-gray-500">
+            <div className="flex items-center gap-6">
+              <span className="flex items-center gap-1.5"><CheckCircle className="w-3.5 h-3.5 text-[#0284c7]" />500+ organisaties</span>
+              <span className="hidden sm:flex items-center gap-1.5"><CheckCircle className="w-3.5 h-3.5 text-[#0284c7]" />LVV-gecertificeerd</span>
+              <span className="hidden md:flex items-center gap-1.5"><CheckCircle className="w-3.5 h-3.5 text-[#0284c7]" />24/7 bereikbaar</span>
+              <span className="hidden lg:flex items-center gap-1.5"><CheckCircle className="w-3.5 h-3.5 text-[#0284c7]" />Vanaf €475/jaar</span>
+            </div>
+            <div className="flex items-center gap-4">
+              <a
+                href={`tel:${COMPANY.phone}`}
+                className="flex items-center gap-1 !text-gray-500 hover:!text-[#0284c7] transition-colors"
+              >
+                <Phone className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">{COMPANY.phone}</span>
+              </a>
+              <a
+                href={`mailto:${COMPANY.email}`}
+                className="flex items-center gap-1 !text-gray-500 hover:!text-[#0284c7] transition-colors"
+              >
+                <Mail className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">{COMPANY.email}</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -87,8 +92,27 @@ export function Header() {
             <Logo />
           </Link>
 
-          {/* Desktop navigation - blauwe links */}
+          {/* Desktop navigation */}
           <div className="hidden lg:flex items-center gap-8">
+            <div className="relative group">
+              <button className="text-sm font-medium text-gray-700 hover:text-[#0284c7] transition-colors inline-flex items-center gap-1">
+                Voor Werkgevers
+                <ChevronDown className="w-4 h-4" />
+              </button>
+              <div className="absolute left-0 top-full pt-3 hidden group-hover:block">
+                <div className="w-72 bg-white border border-gray-100 rounded-xl shadow-lg p-2">
+                  {EMPLOYER_DROPDOWN_LINKS.map((link) => (
+                    <Link
+                      key={link.name}
+                      to={link.href}
+                      className="block px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-gray-50 hover:text-[#E85D56] transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.name}
@@ -109,7 +133,7 @@ export function Header() {
               to="/contact"
               className="btn-primary text-sm"
             >
-              Plan een afspraak
+              Vraag offerte aan
             </Link>
           </div>
 
@@ -130,6 +154,20 @@ export function Header() {
           }`}
         >
           <div className="bg-gray-50 rounded-lg p-4 space-y-2">
+            <p className="px-4 py-2 text-xs uppercase tracking-wide text-gray-400">Voor Werkgevers</p>
+            {EMPLOYER_DROPDOWN_LINKS.map((link) => (
+              <Link
+                key={link.name}
+                to={link.href}
+                className={`block py-2 px-4 rounded-lg transition-colors ${
+                  isActive(link.href)
+                    ? 'bg-[#FEF2F2] text-[#E85D56] font-medium'
+                    : 'text-gray-700 hover:bg-gray-100'
+                }`}
+              >
+                {link.name}
+              </Link>
+            ))}
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.name}
@@ -147,7 +185,7 @@ export function Header() {
               to="/contact"
               className="btn-primary block text-center mt-4"
             >
-              Plan een afspraak
+              Vraag offerte aan
             </Link>
           </div>
         </div>
